@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Psy\Util\Str;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -43,10 +43,4 @@ class User extends Authenticatable
         $this->hasMany(Question::class);
     }
 
-    public function setAttribute($value)
-    {
-        $this->attributes['title'] = $value;
-        $this->attributes['slug'] = Str::slug('$value');
-
-    }
 }
