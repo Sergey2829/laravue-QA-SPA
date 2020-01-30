@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb0b0067-d1c5-439a-a9dc-bbc0b8e8eeaa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,6 +144,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state width="575" height="446" key="SwitcherDM" timestamp="1580317227646">
+      <screen x="0" y="27" width="1920" height="1000" />
+    </state>
+    <state width="575" height="446" key="SwitcherDM/1920.0.1920.1080/0.27.1920.1000@0.27.1920.1000" timestamp="1580317227646" />
     <state x="623" y="237" width="672" height="678" key="search.everywhere.popup" timestamp="1580307671073">
       <screen x="0" y="27" width="1920" height="1000" />
     </state>
