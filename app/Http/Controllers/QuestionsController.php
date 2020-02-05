@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AskQuestionRequest;
 use App\Question;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class QuestionsController extends Controller
      */
     public function index()
     {
-        $questions = Question::with('user')->latest()->paginate(7);
+        $questions = Question::with('user')->latest()->paginate(5);
 
         return view('questions.index', compact('questions'));
     }
@@ -22,22 +23,25 @@ class QuestionsController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function create()
     {
-        //
+        $question = new Question();
+        return view('questions.create', compact('question'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param AskQuestionRequest $request
+     * @return void
      */
-    public function store(Request $request)
+    public function store(AskQuestionRequest $request)
     {
-        //
+        $request->user()->questions()->create($request->only('title', 'body'));
+
+        return redirect()->route('questions.index')->with('success', 'Your question has been submitted');
     }
 
     /**
@@ -65,7 +69,7 @@ class QuestionsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
