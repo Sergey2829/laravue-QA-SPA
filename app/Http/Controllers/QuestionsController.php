@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Gate;
 
 class QuestionsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -65,6 +71,7 @@ class QuestionsController extends Controller
      */
     public function edit(Question $question)
     {
+        $this->authorize('update', $question);
         if(Gate::denies('update-question', $question) ) {
             abort(403, 'Access denied');
         }
@@ -80,6 +87,8 @@ class QuestionsController extends Controller
      */
     public function update(AskQuestionRequest $request, Question $question)
     {
+        $this->authorize('update', $question);
+
         if(Gate::denies('update-question', $question) ) {
             abort(403, 'Access denied');
         }
@@ -95,6 +104,7 @@ class QuestionsController extends Controller
      */
     public function destroy(Question $question)
     {
+        $this->authorize('delete', $question);
         if(Gate::denies('delete-question', $question) ) {
             abort(403, 'Access denied');
         }
