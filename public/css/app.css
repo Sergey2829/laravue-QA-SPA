@@ -14479,3 +14479,7 @@ form.form-delete {
   color: #ffed4a;
 }
 
+.vote-controls a.vote-accepted {
+  color: #38c172;
+}
+

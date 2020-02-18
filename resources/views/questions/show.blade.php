@@ -25,8 +25,8 @@
                                <a title="This question is not useful" class="vote-down off">
                                    <i class="fa fa-caret-down fa-2x"></i>
                                </a>
-                               <a title="Click to mark as favorite question (Click again to undo)" class="favorite mt-3">
-                                   <i class="fa fa-star fa-lg"></i>
+                               <a title="Click to mark as favorite question (Click again to undo)" class="favorite mt-3 favorited">
+                                   <i class="fa fa-star fa-2x"></i>
                                    <span class="favorites-count">111</span>
                                </a>
                            </div>
@@ -49,40 +49,12 @@
                        </div>
                    </div>
                 </div>
-        </div>
-        <div class="row mt-4">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="card-title">
-                            <h2>{{ $question->answers_count . ' ' . \Illuminate\Support\Str::plural('answer', $question->answers_count) }}</h2>
-                        </div>
-                        <hr>
-                        @foreach($question->answers as $answer)
-                            <div class="media">
-                                <div class="media-body">
-                                    {!! $answer->body_html !!}
-                                    <div class="float-right">
-                                        <span class="text-muted">
-                                            Answered {{ $answer->created_date }}
-                                        </span>
-                                        <div class="media mt-2">
-                                            <a href="{{ $answer->user->url }}" class="pr-2">
-                                                <img src="{{ $answer->user->avatar }}">
-                                            </a>
-                                            <div class="media-body mt-1">
-                                                <a href="{{ $answer->user->url }}">{{ $answer->user->name }}</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
-                        @endforeach
-
-                    </div>
-                </div>
             </div>
         </div>
+        @include('answers._index', [
+            'answers' => $question->answers,
+            'answersCount' => $question->answers_count
+         ])
+        @include('answers._create')
     </div>
 @endsection

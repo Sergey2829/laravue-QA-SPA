@@ -75,6 +75,10 @@ form.form-delete {
                 color: $warning;
             }
         }
+
+        &.vote-accepted {
+            color: $green;
+        }
     }
 
 }
