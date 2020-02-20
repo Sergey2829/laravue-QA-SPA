@@ -53,7 +53,12 @@ class AnswerPolicy
      */
     public function update(User $user, Answer $answer)
     {
-        return $user->id === $answer->user->id;
+        return $user->id === $answer->user_id;
+    }
+
+    public function accept(User $user, Answer $answer)
+    {
+        return $user->id === $answer->question->user_id;
     }
 
     /**

@@ -52,4 +52,10 @@ class Question extends Model
     {
         return $this->hasMany('App\Answer');
     }
+
+    public function acceptBestAnswer(Answer $answer)
+    {
+        $this->best_answer_id = $answer->id;
+        $this->save();
+    }
 }
