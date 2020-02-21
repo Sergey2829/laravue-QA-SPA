@@ -15,6 +15,11 @@
                     @endif
 
                     You are logged in!
+                    <div class="container">
+                        <div class="row mt-3">
+                            <a href="{{route('questions.index')}}" class="btn btn-outline-secondary">Questions</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
