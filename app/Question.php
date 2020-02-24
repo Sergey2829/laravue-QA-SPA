@@ -37,7 +37,7 @@ class Question extends Model
 
     public function getBodyHtmlAttribute()
     {
-        return \Parsedown::instance()->text($this->body);
+        return clean($this->bodyHtml());
     }
 
     public function getStatusAttribute()
@@ -86,4 +86,13 @@ class Question extends Model
         return $this->favorites->count();
     }
 
+    public function getLimitSymbolsAttribute()
+    {
+       return \Illuminate\Support\Str::limit(strip_tags($this->bodyHtml()), 250);
+    }
+
+    public function bodyHtml()
+    {
+        return \Parsedown::instance()->text($this->body);
+    }
 }
