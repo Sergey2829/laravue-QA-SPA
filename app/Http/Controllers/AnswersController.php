@@ -49,29 +49,43 @@ class AnswersController extends Controller
      * @param \Illuminate\Http\Request $request
      * @param Question $question
      * @param \App\Answer $answer
-     * @return void
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request, Question $question, Answer $answer)
     {
         $this->authorize('update', $answer);
 
         $answer->update($request->validate([
-            'body' => 'required'
+            'body' => 'required',
         ]));
 
-        return redirect()->route('questions.show', $question->slug)->with('success', 'Answer has been updated');
+        if($request->expectsJson()) {
+            return response()->json([
+                'message' => 'Answer has been updated',
+                'body_html' => $answer->body_html
+            ]);
+        }
+
+//        return redirect()->route('questions.show', $question->slug)->with('success', 'Answer has been updated');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Answer  $answer
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy(Question $question, Answer $answer)
     {
         $this->authorize('delete', $answer);
         $answer->delete();
+
+        if(\request()->expectsJson()) {
+            return response()->json([
+                'message' => 'Your answer has been removed'
+            ]);
+        }
+
         return back()->with('success', 'Your answer has been removed');
     }
 }

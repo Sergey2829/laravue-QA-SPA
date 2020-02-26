@@ -13,6 +13,10 @@ class Question extends Model
         'title', 'body', 'slug'
     ];
 
+    protected $appends = [
+      'created_date'
+    ];
+
     public function user()
     {
         return $this->belongsTo('App\User');

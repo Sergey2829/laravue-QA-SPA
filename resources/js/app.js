@@ -1,3 +1,4 @@
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -8,6 +9,11 @@ require('./bootstrap');
 require('./fontawesome');
 
 window.Vue = require('vue');
+
+import VueIziToast from 'vue-izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+
+Vue.use(VueIziToast);
 
 /**
  * The following block of code may be used to automatically register your
@@ -20,7 +26,8 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('user-info', require('./components/UserInfo').default);
+Vue.component('answer', require('./components/Answer').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
